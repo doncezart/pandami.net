@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+@import url('https://fonts.bunny.net/css?family=inter:400,500,700,900&display=swap');
+
+@theme {
+  --color-bg: #FFFFFF;
+  --color-text: #0A0A0A;
+  --color-muted: #6B7280;
+  --color-border: #E5E7EB;
+  --color-accent: #DC2626;
+  --color-accent-hover: #B91C1C;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
