@@ -45,10 +45,10 @@
   .eyebrow {
     margin: 0 0 1rem;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-accent);
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
   }
 
   .headline {

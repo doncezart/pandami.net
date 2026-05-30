@@ -5,22 +5,20 @@
 <section class="consistency">
   <div class="inner">
     <div class="left">
-      <p class="eyebrow">Why it matters</p>
+      <p class="label">Why it matters</p>
       <h2 class="headline">Inconsistency is invisible — until it costs you.</h2>
       <p class="body">
         Every missed post, every week of silence, every off-brand piece of content
         is a signal to the algorithm and your audience: this brand isn't serious.
         Recovering trust takes twice as long as building it.
       </p>
-      <PillButton href="/contact" variant="primary">Fix This Now</PillButton>
+      <PillButton href="/contact" variant="primary">Get Started</PillButton>
     </div>
     <div class="right">
-      <div class="callout">
-        <blockquote>
-          "I knew I needed to be consistent. I just couldn't keep up on top of everything else."
-        </blockquote>
-        <p class="attribution">— The business owner you recognize yourself in</p>
-      </div>
+      <blockquote>
+        “I knew I needed to be consistent. I just couldn’t keep up on top of everything else.”
+      </blockquote>
+      <p class="attribution">— The business owner you recognise yourself in</p>
     </div>
   </div>
 </section>
@@ -46,13 +44,13 @@
     }
   }
 
-  .eyebrow {
+  .label {
     margin: 0 0 0.75rem;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-accent);
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
   }
 
   .headline {
@@ -70,24 +68,25 @@
     line-height: 1.7;
   }
 
-  .callout {
-    padding: 2rem;
-    background: #f9fafb;
-    border-left: 4px solid var(--color-accent);
-    border-radius: 0 0.75rem 0.75rem 0;
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding-top: 0.5rem;
   }
 
   blockquote {
-    margin: 0 0 1rem;
-    font-size: 1.125rem;
+    margin: 0;
+    font-size: 1.25rem;
     font-style: italic;
+    font-weight: 400;
     color: var(--color-text);
-    line-height: 1.6;
+    line-height: 1.55;
   }
 
   .attribution {
     margin: 0;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--color-muted);
   }
 </style>

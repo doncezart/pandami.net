@@ -22,7 +22,6 @@
 
 <style>
   .teaser {
-    background: #f9fafb;
     padding: 5rem 1.25rem;
     border-bottom: 1px solid var(--color-border);
   }
@@ -40,10 +39,10 @@
   .eyebrow {
     margin: 0;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-accent);
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
   }
 
   .headline {
