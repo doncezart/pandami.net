@@ -1,5 +1,5 @@
-@import 'tailwindcss';
 @import url('https://fonts.bunny.net/css?family=inter:400,500,700,900&display=swap');
+@import 'tailwindcss';
 
 @theme {
   --color-bg: #FFFFFF;
