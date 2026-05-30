@@ -84,7 +84,7 @@ No hero image or illustration. The whitespace and typography carry the section, 
 
 **Visual element:** A horizontal scrolling row (on mobile: vertical list) of labelled task chips, rendered in light gray rounded tags:
 
-`Planning` `Scripting` `Recording` `Editing` `Captioning` `Graphic design` `Scheduling` `Posting` `Community management` `Analytics` `A/B testing` `Strategy revision`
+`Planning` `Scripting` `Recording` `Editing` `Captioning` `Graphic design` `Scheduling` `Posting` `Community management` `Discord moderation` `Bot setup` `Analytics` `A/B testing` `Strategy revision`
 
 **Closing line (large, bold, centered below the chips):**
 > "And you still have a business to run."
@@ -115,14 +115,14 @@ The "Multiple/day" stat is the anchor. It makes the consistency argument concret
 
 **Section headline:** "You define the goal. We handle everything else."
 
-**Layout:** 2x3 card grid (3 columns on desktop, 2 on tablet, 1 on mobile). Each card has a small red icon, a bold label, and a one-sentence description.
+**Layout:** Card grid (3 columns on desktop, 2 on tablet, 1 on mobile). Each card has a small red icon, a bold label, and a one-sentence description.
 
 | Label | Description |
 |---|---|
 | **Strategy** | We research your niche, audience, and competitors before a single post goes out. |
 | **Content Production** | Scripting, recording direction, editing, thumbnails. Delivered ready to publish. |
 | **Scheduling and Posting** | We manage the calendar and hit publish. You don't lift a finger. |
-| **Community Management** | Comments, DMs, and community engagement. All handled. |
+| **Community Building** | From social comments and DMs to full Discord server setup, moderation, bots, and automations. We build and run the community around your brand. |
 | **Analytics and Reporting** | We watch the numbers and report back on what is actually working. |
 | **Automation** | Workflows and tools that scale what is working without scaling the cost. |
 
@@ -161,10 +161,15 @@ The Services page leads with the same results-based framing: what the client sto
 
 **Page headline:** "What we take off your plate."
 
-**Structure:** Services are grouped into the six pillars from the Solution section. Each pillar section has:
+**Structure:** Services are grouped into the pillars from the Solution section. Each pillar section has:
 - A bold category label
 - A one-paragraph description of what it covers and what the client no longer has to think about
 - A pricing tier table or card row beneath it
+
+**Community Building pillar** gets expanded treatment on this page. Under the pillar heading, two sub-sections are listed:
+
+1. **Social Media Communities** -- responding to comments, managing DMs, fostering engagement across platforms
+2. **Discord Servers** -- full server creation, channel architecture, role structure, moderation rules, custom bots, and ongoing moderation. Clients who want a Discord community around their brand get a complete managed solution: Pandami sets it up from scratch and keeps it running.
 
 **Pricing tiers** (names and amounts are placeholders, to be filled in by owner):
 
@@ -189,7 +194,7 @@ Pricing cards show: included pillars (checkmarks), platform count, turnaround ti
 | Name | Text input | Yes |
 | Email | Email input | Yes |
 | Company or brand name | Text input | No |
-| What do you need help with? | Multi-select checkboxes (the six pillars) | Yes (at least one) |
+| What do you need help with? | Multi-select checkboxes (the pillars: Strategy, Content Production, Scheduling and Posting, Community Building and Discord, Analytics and Reporting, Automation) | Yes (at least one) |
 | Monthly budget range | Select dropdown | No |
 | Anything else to add? | Textarea | No |
 
@@ -287,6 +292,18 @@ export const streamers: Streamer[] = [
 **`pillars.ts` shape:**
 ```ts
 export type Pillar = { id: string; label: string; description: string; icon: string };
+```
+
+The Community Building pillar carries an optional `subItems` field for use on the Services page:
+```ts
+export type PillarSubItem = { label: string; description: string };
+export type Pillar = {
+  id: string;
+  label: string;
+  description: string;
+  icon: string;
+  subItems?: PillarSubItem[];
+};
 ```
 
 ---
