@@ -1,11 +1,11 @@
 <svelte:head>
-  <title>Privacy Policy — Pandami</title>
+  <title>Privacy Policy | Pandami</title>
   <meta name="description" content="How Pandami collects, uses, and protects your information." />
   <link rel="canonical" href="https://pandami.net/privacy" />
-  <meta property="og:title" content="Privacy Policy — Pandami" />
+  <meta property="og:title" content="Privacy Policy | Pandami" />
   <meta property="og:description" content="How Pandami collects, uses, and protects your information." />
   <meta property="og:url" content="https://pandami.net/privacy" />
-  <meta name="twitter:title" content="Privacy Policy — Pandami" />
+  <meta name="twitter:title" content="Privacy Policy | Pandami" />
   <meta name="twitter:description" content="How Pandami collects, uses, and protects your information." />
 </svelte:head>
 

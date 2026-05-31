@@ -225,13 +225,13 @@
 </script>
 
 <svelte:head>
-  <title>Services — Pandami</title>
+  <title>Services | Pandami</title>
   <meta name="description" content="From page audits to full production and community management. See exactly what each plan covers." />
   <link rel="canonical" href="https://pandami.net/services" />
-  <meta property="og:title" content="Services — Pandami" />
+  <meta property="og:title" content="Services | Pandami" />
   <meta property="og:description" content="From page audits to full production and community management. See exactly what each plan covers." />
   <meta property="og:url" content="https://pandami.net/services" />
-  <meta name="twitter:title" content="Services — Pandami" />
+  <meta name="twitter:title" content="Services | Pandami" />
   <meta name="twitter:description" content="From page audits to full production and community management. See exactly what each plan covers." />
 </svelte:head>
 

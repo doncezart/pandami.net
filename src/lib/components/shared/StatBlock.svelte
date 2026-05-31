@@ -21,9 +21,9 @@
 
   .value {
     font-size: 2.5rem;
-    font-weight: 900;
+    font-weight: 600;
     line-height: 1;
-    color: var(--color-accent);
+    color: var(--color-text);
   }
 
   .label {

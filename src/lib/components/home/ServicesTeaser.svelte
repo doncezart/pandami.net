@@ -48,7 +48,7 @@
   .headline {
     margin: 0;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 900;
+    font-weight: 500;
     color: var(--color-text);
     line-height: 1.2;
   }

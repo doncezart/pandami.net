@@ -1,30 +1,45 @@
 <section class="problem">
   <div class="inner">
-    <p class="label">The problem</p>
-    <h2 class="headline">
-      Social media is a full-time job.<br />You already have one.
-    </h2>
-    <div class="points">
-      <div class="point">
-        <span class="num">01</span>
-        <div class="point-text">
-          <p class="point-title">Time you don't have</p>
-          <p class="point-body">Posting daily, responding to comments, planning content — it adds up fast.</p>
+    <div class="left">
+      <p class="label">The problem</p>
+      <h2 class="headline">Social media is a full-time job. You already have one.</h2>
+      <p class="context">
+        Most businesses know they should be posting more. The problem is not awareness.
+        It is bandwidth. Quality content demands planning, production, and relentless
+        consistency that a small team cannot sustain alongside everything else.
+      </p>
+    </div>
+    <div class="right">
+      <div class="card">
+        <div class="card-top">
+          <span class="num">01</span>
+          <p class="card-title">Time you don't have</p>
         </div>
+        <p class="card-body">
+          Filming, editing, writing captions, scheduling, responding to comments.
+          Each task feels small until you add them up and realize social media is
+          consuming 20-plus hours a month you never planned to spend on it.
+        </p>
       </div>
-      <div class="point">
-        <span class="num">02</span>
-        <div class="point-text">
-          <p class="point-title">Consistency you can't maintain</p>
-          <p class="point-body">Algorithms reward consistency. Life gets in the way. The results suffer.</p>
+      <div class="card">
+        <div class="card-top">
+          <span class="num">02</span>
+          <p class="card-title">Consistency you can't maintain</p>
         </div>
+        <p class="card-body">
+          Algorithms punish gaps. Two weeks of silence can undo months of momentum.
+          When your posting depends on your schedule, it will always come second.
+        </p>
       </div>
-      <div class="point">
-        <span class="num">03</span>
-        <div class="point-text">
-          <p class="point-title">Strategy you're not sure about</p>
-          <p class="point-body">Trends change weekly. What worked six months ago doesn't anymore.</p>
+      <div class="card">
+        <div class="card-top">
+          <span class="num">03</span>
+          <p class="card-title">Trends that don't wait</p>
         </div>
+        <p class="card-body">
+          A trend spotted Monday is old news by Thursday. Without a team ready to
+          move the moment an opportunity appears, you are always posting yesterday's content.
+        </p>
       </div>
     </div>
   </div>
@@ -34,70 +49,106 @@
   .problem {
     background-color: var(--color-text);
     color: #ffffff;
-    padding: 5rem 1.25rem;
+    padding: 5rem 1.25rem 6rem;
   }
 
   .inner {
     max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .left {
+    position: sticky;
+    top: 5rem;
   }
 
   .label {
-    margin: 0 0 1.5rem;
+    margin: 0 0 1.25rem;
     font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--color-accent);
   }
 
   .headline {
-    margin: 0 0 3rem;
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 900;
-    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.5rem, 2.75vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1.25;
     color: #ffffff;
   }
 
-  .points {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  .context {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.5);
   }
 
-  .point {
+  .right {
     display: flex;
-    gap: 2rem;
-    padding: 1.75rem 0;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .card {
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .card:last-child {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card-top {
+    display: flex;
     align-items: baseline;
+    gap: 1.25rem;
   }
 
   .num {
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.25);
     flex-shrink: 0;
-    width: 1.5rem;
+    font-variant-numeric: tabular-nums;
   }
 
-  .point-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
-  }
-
-  .point-title {
+  .card-title {
     margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.0625rem;
+    font-weight: 500;
     color: #ffffff;
   }
 
-  .point-body {
+  .card-body {
     margin: 0;
+    padding-left: 2.25rem;
     font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.55);
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .problem {
+      padding: 3rem 1rem 4rem;
+    }
+
+    .inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .left {
+      position: static;
+    }
   }
 </style>

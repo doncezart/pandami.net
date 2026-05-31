@@ -9,13 +9,13 @@
 </script>
 
 <svelte:head>
-  <title>Pandami — All your social media needs taken care of</title>
+  <title>Pandami | All your social media needs taken care of</title>
   <meta name="description" content="Pandami handles your social media from strategy to daily posting to community. Focus on your business and we handle the rest." />
   <link rel="canonical" href="https://pandami.net/" />
-  <meta property="og:title" content="Pandami — All your social media needs taken care of" />
+  <meta property="og:title" content="Pandami | All your social media needs taken care of" />
   <meta property="og:description" content="Pandami handles your social media from strategy to daily posting to community. Focus on your business and we handle the rest." />
   <meta property="og:url" content="https://pandami.net/" />
-  <meta name="twitter:title" content="Pandami — All your social media needs taken care of" />
+  <meta name="twitter:title" content="Pandami | All your social media needs taken care of" />
   <meta name="twitter:description" content="Pandami handles your social media from strategy to daily posting to community. Focus on your business and we handle the rest." />
 </svelte:head>
 

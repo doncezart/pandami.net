@@ -15,13 +15,13 @@
 </script>
 
 <svelte:head>
-  <title>Contact — Pandami</title>
+  <title>Contact | Pandami</title>
   <meta name="description" content="Get in touch with Pandami. Tell us about your business and we'll put together a plan." />
   <link rel="canonical" href="https://pandami.net/contact" />
-  <meta property="og:title" content="Contact — Pandami" />
+  <meta property="og:title" content="Contact | Pandami" />
   <meta property="og:description" content="Get in touch with Pandami. Tell us about your business and we'll put together a plan." />
   <meta property="og:url" content="https://pandami.net/contact" />
-  <meta name="twitter:title" content="Contact — Pandami" />
+  <meta name="twitter:title" content="Contact | Pandami" />
   <meta name="twitter:description" content="Get in touch with Pandami. Tell us about your business and we'll put together a plan." />
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>

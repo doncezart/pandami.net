@@ -230,7 +230,7 @@
     background: #ffffff;
   }
 
-  /* Featured card — elevated */
+  /* Featured card | elevated */
   .plan-featured {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
   }
@@ -329,7 +329,7 @@
     color: rgba(255, 255, 255, 0.55);
   }
 
-  /* CTA — full width */
+  /* CTA | full width */
   .plan-cta :global(.pill-button) {
     width: 100%;
     justify-content: center;

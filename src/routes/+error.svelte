@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>{$page.status} — Pandami</title>
+  <title>{$page.status} | Pandami</title>
 </svelte:head>
 
 <main class="error-page" id="main-content">

@@ -1,11 +1,11 @@
 <svelte:head>
-  <title>Terms of Service — Pandami</title>
+  <title>Terms of Service | Pandami</title>
   <meta name="description" content="Terms and conditions for using Pandami and its services." />
   <link rel="canonical" href="https://pandami.net/terms" />
-  <meta property="og:title" content="Terms of Service — Pandami" />
+  <meta property="og:title" content="Terms of Service | Pandami" />
   <meta property="og:description" content="Terms and conditions for using Pandami and its services." />
   <meta property="og:url" content="https://pandami.net/terms" />
-  <meta name="twitter:title" content="Terms of Service — Pandami" />
+  <meta name="twitter:title" content="Terms of Service | Pandami" />
   <meta name="twitter:description" content="Terms and conditions for using Pandami and its services." />
 </svelte:head>
 

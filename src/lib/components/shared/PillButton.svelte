@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
 
-  type Variant = 'primary' | 'secondary' | 'inverted';
+  type Variant = 'primary' | 'secondary' | 'inverted' | 'dark';
 
   interface Props {
     variant?: Variant;
@@ -37,13 +37,13 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.4375rem 1rem;
     border-radius: 9999px;
-    font-weight: 600;
-    font-size: 0.875rem;
+    font-weight: 500;
+    font-size: 0.8125rem;
     cursor: pointer;
     text-decoration: none;
-    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s, opacity 0.15s;
     border: 2px solid transparent;
   }
 
@@ -76,5 +76,15 @@
 
   .inverted:hover {
     background-color: #f3f4f6;
+  }
+
+  .dark {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    border-color: var(--color-text);
+  }
+
+  .dark:hover {
+    opacity: 0.8;
   }
 </style>

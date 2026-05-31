@@ -52,7 +52,7 @@
   }
 
   .icon-wrap {
-    color: var(--color-accent);
+    color: var(--color-text);
     display: flex;
     align-items: center;
   }
