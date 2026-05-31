@@ -45,9 +45,11 @@ test('services page has canonical URL', async ({ page }) => {
 
 test('cookie banner shows on first visit and can be dismissed', async ({ page, context }) => {
   await context.clearCookies();
-  await page.evaluate(() => localStorage.clear());
-
+  // Navigate first so we have an origin to work with
   await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+
   const banner = page.locator('[aria-label="Cookie notice"]');
   await expect(banner).toBeVisible();
 
@@ -59,8 +61,10 @@ test('cookie banner shows on first visit and can be dismissed', async ({ page, c
 });
 
 test('cookie banner does not show on repeat visit', async ({ page }) => {
-  await page.evaluate(() => localStorage.setItem('pandami-consent', '1'));
+  // Navigate first so we have an origin, set localStorage, then reload
   await page.goto('/');
+  await page.evaluate(() => localStorage.setItem('pandami-consent', '1'));
+  await page.reload();
   const banner = page.locator('[aria-label="Cookie notice"]');
   await expect(banner).not.toBeVisible();
 });
@@ -68,7 +72,7 @@ test('cookie banner does not show on repeat visit', async ({ page }) => {
 test('404 page shows correct content and back button', async ({ page }) => {
   await page.goto('/this-page-does-not-exist-at-all');
   await expect(page.locator('h1')).toContainText('Page not found');
-  const backBtn = page.locator('a[href="/"]');
+  const backBtn = page.locator('main a[href="/"]');
   await expect(backBtn).toBeVisible();
 });
 
