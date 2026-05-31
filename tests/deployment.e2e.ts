@@ -24,3 +24,21 @@ test('homepage has global og:site_name and og:image', async ({ page }) => {
   );
   expect(ogImage).toBe('https://pandami.net/og.png');
 });
+
+test('homepage has canonical URL', async ({ page }) => {
+  await page.goto('/');
+  const canonical = await page.$eval(
+    'link[rel="canonical"]',
+    (el) => el.getAttribute('href')
+  );
+  expect(canonical).toBe('https://pandami.net/');
+});
+
+test('services page has canonical URL', async ({ page }) => {
+  await page.goto('/services');
+  const canonical = await page.$eval(
+    'link[rel="canonical"]',
+    (el) => el.getAttribute('href')
+  );
+  expect(canonical).toBe('https://pandami.net/services');
+});

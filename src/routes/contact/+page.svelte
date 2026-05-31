@@ -16,9 +16,15 @@
 <svelte:head>
   <title>Contact — Pandami</title>
   <meta name="description" content="Get in touch with Pandami. Tell us about your business and we'll put together a plan." />
+  <link rel="canonical" href="https://pandami.net/contact" />
+  <meta property="og:title" content="Contact — Pandami" />
+  <meta property="og:description" content="Get in touch with Pandami. Tell us about your business and we'll put together a plan." />
+  <meta property="og:url" content="https://pandami.net/contact" />
+  <meta name="twitter:title" content="Contact — Pandami" />
+  <meta name="twitter:description" content="Get in touch with Pandami. Tell us about your business and we'll put together a plan." />
 </svelte:head>
 
-<main>
+<main id="main-content">
   <section class="contact-hero">
     <div class="inner">
       <p class="eyebrow">Contact</p>
