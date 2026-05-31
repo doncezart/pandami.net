@@ -42,3 +42,25 @@ test('services page has canonical URL', async ({ page }) => {
   );
   expect(canonical).toBe('https://pandami.net/services');
 });
+
+test('cookie banner shows on first visit and can be dismissed', async ({ page, context }) => {
+  await context.clearCookies();
+  await page.evaluate(() => localStorage.clear());
+
+  await page.goto('/');
+  const banner = page.locator('[aria-label="Cookie notice"]');
+  await expect(banner).toBeVisible();
+
+  await page.click('text=Got it');
+  await expect(banner).not.toBeVisible();
+
+  const consent = await page.evaluate(() => localStorage.getItem('pandami-consent'));
+  expect(consent).toBe('1');
+});
+
+test('cookie banner does not show on repeat visit', async ({ page }) => {
+  await page.evaluate(() => localStorage.setItem('pandami-consent', '1'));
+  await page.goto('/');
+  const banner = page.locator('[aria-label="Cookie notice"]');
+  await expect(banner).not.toBeVisible();
+});

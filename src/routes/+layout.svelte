@@ -3,6 +3,7 @@
   import { onMount } from 'svelte';
   import Navbar from '$lib/components/nav/Navbar.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import CookieBanner from '$lib/components/CookieBanner.svelte';
   import Scrollbar from '$lib/components/shared/Scrollbar.svelte';
   import type { Snippet } from 'svelte';
   import { PUBLIC_UMAMI_URL, PUBLIC_UMAMI_SITE_ID } from '$env/static/public';
@@ -68,3 +69,4 @@
 <Navbar />
 {@render children()}
 <Footer />
+<CookieBanner />
