@@ -3,75 +3,60 @@ import sharp from 'sharp';
 const W = 1200;
 const H = 630;
 
-// Scale visual tall, place on right half — no overlap with text
-const VH = 300;
-const VW = Math.round(VH * 1400 / 400); // 1050px wide; right edge clips off naturally
-const VX = 620;
-const VY = Math.round((H - VH) / 2);    // vertically centered
+// Card: 1200×352 source, scale to 1120px wide, centered
+const CW = 1200, CH = 352;
+const VW = 1120;
+const VH = Math.round(VW * CH / CW); // ≈327
+const VX = Math.round((W - VW) / 2); // 40px left/right margin
+const VY = H - VH - VX;              // bottom margin = left/right margin (40px)
+const cutY = VY + Math.round(VH / 2); // black bg starts at card's vertical midpoint
 
-const visual = await sharp('/tmp/hero-visual.png')
+const card = await sharp('/tmp/analytics-card.png')
   .resize(VW, VH, { fit: 'fill' })
   .png()
   .toBuffer();
 
-const svg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="fadeR" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0%" stop-color="#0A0A0A" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="1"/>
-    </linearGradient>
-    <linearGradient id="fadeL" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0%" stop-color="#0A0A0A" stop-opacity="1"/>
-      <stop offset="70%" stop-color="#0A0A0A" stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
-    </linearGradient>
-  </defs>
+// Background: pure white top, hard cut to pure black at card midpoint — no gradients
+const bgSvg = Buffer.from(`<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="${W}" height="${cutY}" fill="#FFFFFF"/>
+  <rect y="${cutY}" width="${W}" height="${H - cutY}" fill="#0A0A0A"/>
+</svg>`);
 
-  <!-- eyebrow -->
-  <text x="64" y="210"
-    font-family="Inter,ui-sans-serif,system-ui,sans-serif"
-    font-size="11" font-weight="600" letter-spacing="3"
-    fill="rgba(255,255,255,0.45)">SOCIAL MEDIA AGENCY</text>
+// Text overlay
+const textSvg = Buffer.from(`<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
+  <!-- Eyebrow -->
+  <text x="${W / 2}" y="69"
+    text-anchor="middle"
+    font-family="Inter,ui-sans-serif,system-ui,-apple-system,sans-serif"
+    font-size="11" font-weight="600" letter-spacing="4"
+    fill="#DC2626">SOCIAL MEDIA AGENCY</text>
 
-  <!-- headline -->
-  <text x="64" y="282"
-    font-family="Inter,ui-sans-serif,system-ui,sans-serif"
-    font-size="50" font-weight="900" fill="#FFFFFF">Your social media</text>
-  <text x="64" y="344"
-    font-family="Inter,ui-sans-serif,system-ui,sans-serif"
-    font-size="50" font-weight="900" fill="#FFFFFF">needs taken care of.</text>
+  <!-- Title -->
+  <text x="${W / 2}" y="158"
+    text-anchor="middle"
+    font-family="Inter,ui-sans-serif,system-ui,-apple-system,sans-serif"
+    font-size="74" font-weight="900"
+    fill="#0A0A0A">Pandami</text>
 
-  <!-- sub -->
-  <text x="64" y="393"
-    font-family="Inter,ui-sans-serif,system-ui,sans-serif"
-    font-size="16" font-weight="400"
-    fill="rgba(255,255,255,0.45)">Pandami helps brands grow across every channel.</text>
-
-  <!-- left edge of visual: fade in -->
-  <rect x="${VX}" y="0" width="100" height="${H}" fill="url(#fadeL)"/>
-  <!-- right edge: fade out -->
-  <rect x="${W - 110}" y="0" width="110" height="${H}" fill="url(#fadeR)"/>
-
-  <!-- red bottom bar -->
-  <rect x="0" y="${H - 4}" width="${W}" height="4" fill="#DC2626"/>
-
-  <!-- domain -->
-  <text x="64" y="${H - 22}"
-    font-family="Inter,ui-sans-serif,system-ui,sans-serif"
-    font-size="13" font-weight="400"
-    fill="rgba(255,255,255,0.3)">pandami.net</text>
-</svg>`;
+  <!-- Tagline -->
+  <text x="${W / 2}" y="208"
+    text-anchor="middle"
+    font-family="Inter,ui-sans-serif,system-ui,-apple-system,sans-serif"
+    font-size="17" font-weight="400"
+    fill="rgba(10,10,10,0.48)">All your social media needs taken care of.</text>
+</svg>`);
 
 const base = await sharp({
-  create: { width: W, height: H, channels: 4, background: { r: 10, g: 10, b: 10, alpha: 1 } },
+  create: { width: W, height: H, channels: 4, background: '#FFFFFF' },
 }).png().toBuffer();
 
 await sharp(base)
   .composite([
-    { input: visual, left: VX, top: VY },
-    { input: Buffer.from(svg), top: 0, left: 0 },
+    { input: await sharp(bgSvg).png().toBuffer(), top: 0, left: 0 },
+    { input: card, top: VY, left: VX },
+    { input: await sharp(textSvg).png().toBuffer(), top: 0, left: 0 },
   ])
   .png()
   .toFile('static/og.png');
 
-console.log('og.png written');
+console.log(`og.png written — card at y=${VY} h=${VH} margin=${VX}px, cut at y=${cutY}`);
