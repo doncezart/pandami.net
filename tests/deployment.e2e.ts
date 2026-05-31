@@ -83,3 +83,11 @@ test('terms page loads with correct title', async ({ page }) => {
   expect(response?.status()).toBe(200);
   await expect(page).toHaveTitle(/Terms of Service/);
 });
+
+test('footer has privacy and terms links', async ({ page }) => {
+  await page.goto('/');
+  const privacyLink = page.locator('footer a[href="/privacy"]');
+  const termsLink = page.locator('footer a[href="/terms"]');
+  await expect(privacyLink).toBeVisible();
+  await expect(termsLink).toBeVisible();
+});

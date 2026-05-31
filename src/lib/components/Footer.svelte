@@ -9,22 +9,28 @@
       <p class="tagline">All your social media needs taken care of.</p>
     </div>
 
-    <div class="links-col">
-      <h4 class="col-title">Pages</h4>
-      <a href="/services" class="link">Services</a>
-      <a href="/contact" class="link">Contact</a>
-    </div>
+    <div class="links-group">
+      <nav class="links-col" aria-label="Pages">
+        <span class="col-title">Pages</span>
+        <a href="/services" class="link">Services</a>
+        <a href="/contact" class="link">Contact</a>
+      </nav>
 
-    <div class="links-col">
-      <h4 class="col-title">Tools</h4>
-      <a href="https://fx.pandami.net" class="link">FX Library</a>
-      <a href="https://memes.pandami.net" class="link">Meme Library</a>
-      <a href="https://streamaid.pandami.net" class="link">StreamAid</a>
+      <nav class="links-col" aria-label="Tools">
+        <span class="col-title">Tools</span>
+        <a href="https://fx.pandami.net" class="link">FX Library</a>
+        <a href="https://memes.pandami.net" class="link">Meme Library</a>
+        <a href="https://streamaid.pandami.net" class="link">StreamAid</a>
+      </nav>
     </div>
   </div>
 
   <div class="bottom">
-    <span>© {year} Pandami. All rights reserved.</span>
+    <span class="copy">© {year} Pandami. All rights reserved.</span>
+    <nav class="legal-links" aria-label="Legal">
+      <a href="/privacy" class="legal-link">Privacy</a>
+      <a href="/terms" class="legal-link">Terms</a>
+    </nav>
   </div>
 </footer>
 
@@ -32,27 +38,43 @@
   .footer {
     background-color: var(--color-text);
     color: #ffffff;
-    padding: 3rem 1.25rem 1.5rem;
+    padding: 4rem 1.25rem 0;
   }
 
   .inner {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
   }
 
   @media (min-width: 640px) {
     .inner {
-      grid-template-columns: 2fr 1fr 1fr;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
     }
+  }
+
+  .links-group {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+  }
+
+  .brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .brand {
     display: block;
-    font-weight: 900;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    font-weight: 600;
     color: #ffffff;
     margin-bottom: 0.5rem;
   }
@@ -65,29 +87,27 @@
     max-width: 280px;
   }
 
-  .brand-col {
-    display: flex;
-    flex-direction: column;
-  }
-
   .links-col {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.625rem;
+    align-items: flex-end;
+    text-align: right;
   }
 
   .col-title {
-    margin: 0 0 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.32);
   }
 
   .link {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
     transition: color 0.15s;
   }
@@ -98,10 +118,34 @@
 
   .bottom {
     max-width: 1200px;
-    margin: 2rem auto 0;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+    margin: 0 auto;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .copy {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.28);
+  }
+
+  .legal-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .legal-link {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.28);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .legal-link:hover {
+    color: rgba(255, 255, 255, 0.65);
   }
 </style>
