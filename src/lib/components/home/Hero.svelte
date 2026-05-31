@@ -1,71 +1,62 @@
 <script lang="ts">
   import PillButton from '$lib/components/shared/PillButton.svelte';
-  import StatBlock from '$lib/components/shared/StatBlock.svelte';
 </script>
 
 <section class="hero">
   <div class="inner">
     <div class="content">
       <p class="eyebrow">Social Media Agency</p>
-      <h1 class="headline">
-        Your social media,<br />
-        <span class="accent">fully taken care of.</span>
-      </h1>
+      <h1 class="headline">Your social media needs taken care of</h1>
       <p class="sub">
-        From strategy to daily posting to community — Pandami handles everything
-        so you can focus on running your business.
+        Consistent, high-volume content takes more time than most businesses can spare. We take it off your plate.
       </p>
       <div class="ctas">
-        <PillButton href="/contact" variant="primary">Get Started</PillButton>
-        <PillButton href="/services" variant="secondary">See What We Do</PillButton>
+        <PillButton href="/contact" variant="dark" data-umami-event="hero-cta">Get Started</PillButton>
+        <a href="/services" class="text-link">See what we do →</a>
       </div>
-    </div>
-    <div class="stats">
-      <StatBlock value="6" label="Core service pillars" />
-      <StatBlock value="100%" label="Handled for you" />
-      <StatBlock value="0" label="Headaches" />
     </div>
   </div>
 </section>
 
 <style>
   .hero {
-    padding: 5rem 1.25rem 4rem;
-    border-bottom: 1px solid var(--color-border);
+    padding: 5rem 1.25rem 3.5rem;
   }
 
   .inner {
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  .content {
+    max-width: none;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    align-items: flex-start;
   }
 
   .eyebrow {
-    margin: 0 0 1rem;
+    margin: 0 0 1.25rem;
     font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--color-muted);
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
   }
 
   .headline {
     margin: 0 0 1.25rem;
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 500;
     line-height: 1.1;
     color: var(--color-text);
-  }
-
-  .accent {
-    color: var(--color-accent);
+    letter-spacing: -0.025em;
+    max-width: none;
   }
 
   .sub {
     margin: 0 0 2rem;
-    font-size: 1.125rem;
+    font-size: 1rem;
     color: var(--color-muted);
     max-width: 520px;
     line-height: 1.7;
@@ -74,20 +65,27 @@
   .ctas {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.875rem;
+    align-items: center;
+    justify-content: flex-start;
   }
 
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border);
+  .text-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.15s;
   }
 
-  @media (max-width: 480px) {
-    .stats {
-      grid-template-columns: 1fr;
+  .text-link:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 1rem 2.5rem;
     }
   }
 </style>

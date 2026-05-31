@@ -3,6 +3,7 @@
   import { pillars } from '$lib/data/pillars.js';
   import PillButton from '$lib/components/shared/PillButton.svelte';
   import type { ActionData } from './$types';
+  import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 
   interface Props {
     form: ActionData;
@@ -22,6 +23,7 @@
   <meta property="og:url" content="https://pandami.net/contact" />
   <meta name="twitter:title" content="Contact — Pandami" />
   <meta name="twitter:description" content="Get in touch with Pandami. Tell us about your business and we'll put together a plan." />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 
 <main id="main-content">
@@ -47,7 +49,12 @@
           method="POST"
           use:enhance={() => {
             submitting = true;
-            return async ({ update }) => {
+            return async ({ result, update }) => {
+              if (result.type === 'success') {
+                (window as any).umami?.track('contact-success');
+              } else if (result.type === 'failure') {
+                (window as any).umami?.track('contact-error');
+              }
               await update();
               submitting = false;
             };
@@ -112,7 +119,9 @@
             >{form?.message ?? ''}</textarea>
           </div>
 
-          <PillButton type="submit" variant="primary">
+          <div class="cf-turnstile" data-sitekey={PUBLIC_TURNSTILE_SITE_KEY} data-theme="light"></div>
+
+          <PillButton type="submit" variant="primary" data-umami-event="contact-submit">
             {submitting ? 'Sending…' : 'Send Message'}
           </PillButton>
         </form>
@@ -295,6 +304,11 @@
     font-size: 1.5rem;
     font-weight: 900;
     color: var(--color-text);
+  }
+
+  .cf-turnstile {
+    min-height: 65px;
+    margin-bottom: 0.75rem;
   }
 
   .success-card p {
