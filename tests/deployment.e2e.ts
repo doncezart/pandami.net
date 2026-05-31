@@ -64,3 +64,22 @@ test('cookie banner does not show on repeat visit', async ({ page }) => {
   const banner = page.locator('[aria-label="Cookie notice"]');
   await expect(banner).not.toBeVisible();
 });
+
+test('404 page shows correct content and back button', async ({ page }) => {
+  await page.goto('/this-page-does-not-exist-at-all');
+  await expect(page.locator('h1')).toContainText('Page not found');
+  const backBtn = page.locator('a[href="/"]');
+  await expect(backBtn).toBeVisible();
+});
+
+test('privacy page loads with correct title', async ({ page }) => {
+  const response = await page.goto('/privacy');
+  expect(response?.status()).toBe(200);
+  await expect(page).toHaveTitle(/Privacy Policy/);
+});
+
+test('terms page loads with correct title', async ({ page }) => {
+  const response = await page.goto('/terms');
+  expect(response?.status()).toBe(200);
+  await expect(page).toHaveTitle(/Terms of Service/);
+});
