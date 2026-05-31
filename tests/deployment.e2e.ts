@@ -9,3 +9,18 @@ test('homepage has JSON-LD structured data', async ({ page }) => {
   expect(data['@type']).toBe('ProfessionalService');
   expect(data.name).toBe('Pandami');
 });
+
+test('homepage has global og:site_name and og:image', async ({ page }) => {
+  await page.goto('/');
+  const siteName = await page.$eval(
+    'meta[property="og:site_name"]',
+    (el) => el.getAttribute('content')
+  );
+  expect(siteName).toBe('Pandami');
+
+  const ogImage = await page.$eval(
+    'meta[property="og:image"]',
+    (el) => el.getAttribute('content')
+  );
+  expect(ogImage).toBe('https://pandami.net/og.png');
+});
