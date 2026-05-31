@@ -31,7 +31,7 @@
     <div class="inner">
       <p class="eyebrow">Contact</p>
       <h1 class="headline">Let's talk about your social media.</h1>
-      <p class="sub">Tell us a bit about your business and what you're looking for. We'll get back to you within one business day.</p>
+      <p class="sub">Tell us a bit about your business and what you're looking for. We'll get back to you soon.</p>
     </div>
   </section>
 
@@ -41,7 +41,7 @@
         <div class="success-card">
           <span class="success-icon">✓</span>
           <h2>Message received!</h2>
-          <p>We'll get back to you within one business day.</p>
+          <p>We'll get back to you soon.</p>
           <PillButton href="/" variant="secondary">Back to Home</PillButton>
         </div>
       {:else}
@@ -74,6 +74,7 @@
               type="text"
               autocomplete="name"
               required
+              maxlength="200"
               value={form?.name ?? ''}
               placeholder="Jane Smith"
             />
@@ -87,6 +88,7 @@
               type="email"
               autocomplete="email"
               required
+              maxlength="200"
               value={form?.email ?? ''}
               placeholder="jane@yourcompany.com"
             />
@@ -106,6 +108,15 @@
                   {pillar.label}
                 </label>
               {/each}
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="services"
+                  value="other"
+                  checked={form?.services?.includes('other') ?? false}
+                />
+                Other
+              </label>
             </div>
           </fieldset>
 
@@ -115,15 +126,17 @@
               id="message"
               name="message"
               rows="4"
+              maxlength="1024"
               placeholder="Tell us about your business, your current situation, goals..."
             >{form?.message ?? ''}</textarea>
           </div>
 
-          <div class="cf-turnstile" data-sitekey={PUBLIC_TURNSTILE_SITE_KEY} data-theme="light"></div>
-
-          <PillButton type="submit" variant="primary" data-umami-event="contact-submit">
-            {submitting ? 'Sending…' : 'Send Message'}
-          </PillButton>
+          <div class="form-actions">
+            <div class="cf-turnstile" data-sitekey={PUBLIC_TURNSTILE_SITE_KEY} data-theme="light"></div>
+            <PillButton type="submit" variant="primary" data-umami-event="contact-submit">
+              {submitting ? 'Sending…' : 'Send Message'}
+            </PillButton>
+          </div>
         </form>
       {/if}
     </div>
@@ -307,8 +320,14 @@
   }
 
   .cf-turnstile {
-    min-height: 65px;
-    margin-bottom: 0.75rem;
+    line-height: 0;
+  }
+
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
   }
 
   .success-card p {
