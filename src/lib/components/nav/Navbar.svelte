@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from '$app/stores';
   import ToolsDropdown from './ToolsDropdown.svelte';
   import MobileMenu from './MobileMenu.svelte';
 
@@ -19,13 +20,21 @@
 
     <!-- Desktop nav -->
     <nav class="desktop-nav">
-      <a href="/services" class="nav-link">Services</a>
-      <a href="/contact" class="nav-link">Contact</a>
       <ToolsDropdown />
+      <a
+        href="/services"
+        class="nav-link"
+        aria-current={$page.url.pathname === '/services' ? 'page' : undefined}
+      >Services</a>
+      <a
+        href="/contact"
+        class="nav-link"
+        aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}
+      >Contact</a>
     </nav>
 
     <!-- Desktop CTA -->
-    <a href="/contact" class="cta-btn desktop-only">Get Started</a>
+    <a href="/contact" class="cta-btn desktop-only">Book a Call</a>
 
     <!-- Mobile hamburger -->
     <button class="hamburger mobile-only" onclick={openMobile} aria-label="Open menu">
@@ -46,27 +55,30 @@
     height: 64px;
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
+    padding: 0 1.25rem;
   }
 
   .inner {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     height: 100%;
-    padding: 0 1.25rem;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
   }
 
   .brand {
-    font-weight: 900;
-    font-size: 1.25rem;
+    font-weight: 600;
+    font-size: 1.125rem;
     color: var(--color-text);
     text-decoration: none;
-    margin-right: auto;
   }
 
   .desktop-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -87,19 +99,19 @@
   .cta-btn {
     display: inline-flex;
     align-items: center;
-    padding: 0.5rem 1.25rem;
-    background: var(--color-accent);
-    color: #ffffff;
+    padding: 0.4375rem 1rem;
+    background: var(--color-text);
+    color: var(--color-bg);
     border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 0.8125rem;
+    font-weight: 500;
     text-decoration: none;
-    transition: background-color 0.15s;
+    transition: opacity 0.15s;
     white-space: nowrap;
   }
 
   .cta-btn:hover {
-    background: var(--color-accent-hover);
+    opacity: 0.8;
   }
 
   .hamburger {
